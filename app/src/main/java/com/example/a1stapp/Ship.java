@@ -51,7 +51,7 @@ public class Ship implements EntityBase {
 
         // New to Week 8
         // Using Sprite animation class to load our sprite sheet
-        spritesmurf = new Sprite(ResourceManager.Instance.GetBitmap(R.drawable.smurf_sprite), 4, 4, 16);
+        spritesmurf = new Sprite(ResourceManager.Instance.GetBitmap(R.drawable.heli), 4, 4, 16);
 
         //Find the surfaceview size or screensize
         metrics = _view.getResources().getDisplayMetrics();
@@ -110,13 +110,13 @@ public class Ship implements EntityBase {
 
         //transform.postTranslate(xPos, yPos);
         // New to Week 8
-        spritesmurf.Render(_canvas, 500, 500);  // Location can be changed!
+        spritesmurf.Render(_canvas, (int)xPos, (int)yPos);  // Location can be changed!
 
-        _canvas.drawBitmap(bmp, 600, 100, null);
+        _canvas.drawBitmap(bmp, 350, 1000, null);
 
-        Matrix transform = new Matrix();
+        /*Matrix transform = new Matrix();
         transform.postScale((0.5f + Math.abs((float)Math.sin(lifetime))), (0.5f + Math.abs((float)Math.sin(lifetime))));
-        _canvas.drawBitmap(bmp,transform, null);
+        _canvas.drawBitmap(bmp,transform, null);*/
     }
 
     @Override
@@ -132,11 +132,11 @@ public class Ship implements EntityBase {
     }
 
     @Override
-    public ENTITY_TYPE GetEntityType(){ return ENTITY_TYPE.ENT_SHIP;}
+    public ENTITY_TYPE GetEntityType(){ return ENTITY_TYPE.ENT_DEFAULT;}
 
     public static Ship Create() {
         Ship result = new Ship();
-        EntityManager.Instance.AddEntity(result, ENTITY_TYPE.ENT_SHIP);
+        EntityManager.Instance.AddEntity(result, ENTITY_TYPE.ENT_DEFAULT);
         return result;
     }
 
