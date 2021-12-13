@@ -128,10 +128,15 @@ public class EntityManager {
         entityList.add(_newEntity);
     }
 
+
     public void Clean()
     {
         entityList.clear();
     }
+    {
+
+    }
+
 }
 
 

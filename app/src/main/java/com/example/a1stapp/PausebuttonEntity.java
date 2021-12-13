@@ -13,7 +13,6 @@ public class PausebuttonEntity implements EntityBase{
     private Bitmap ScaledbmpP = null;
     private Bitmap ScaledbmpUP = null;
 
-
     private float xPos = 0;
     private float yPos = 0;
 
@@ -21,7 +20,7 @@ public class PausebuttonEntity implements EntityBase{
     private boolean isInit = false;
     private boolean Paused = false;
 
-    int ScreenWidth, ScreenHeight;
+    float ScreenWidth, ScreenHeight;
 
     private float buttonDelay = 0;
 
@@ -68,7 +67,6 @@ public class PausebuttonEntity implements EntityBase{
                 if (Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, xPos,yPos, imgRadius) && buttonDelay >= 0.25)
                 {
                     Paused = true;
-
                 }
                 buttonDelay = 0;
                 GameSystem.Instance.SetIsPaused(!GameSystem.Instance.GetIsPaused());

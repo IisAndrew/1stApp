@@ -1,7 +1,7 @@
 package com.example.a1stapp;
 
 // Created by TanSiewLan20201
-// Sample Entity 
+// Sample Entity
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -11,11 +11,11 @@ import android.view.SurfaceView;
 
 import java.util.Random;
 
-public class Smurf implements EntityBase, Collidable{
+public class Ship implements EntityBase {
     private boolean isDone = false;
     private Bitmap bmp = null, scaledbmp = null;
     int ScreenWidth, ScreenHeight;
-    private int xPos, yPos, offset;
+    private float xPos, yPos, offset;
     private SurfaceView view = null;
     Matrix tfx = new Matrix();
     DisplayMetrics metrics;
@@ -46,12 +46,12 @@ public class Smurf implements EntityBase, Collidable{
 
         //isInit = true;
 
-        //bmp = BitmapFactory.decodeResource(_view.getResources(), R.drawable.ship2_1);
-        bmp = ResourceManager.Instance.GetBitmap( R.drawable.heli);
+        //bmp = BitmapFactory.decodeResource(_view.getResources(), R.drawable.heli);
+        bmp = ResourceManager.Instance.GetBitmap(R.drawable.heli);
 
         // New to Week 8
         // Using Sprite animation class to load our sprite sheet
-        spritesmurf = new Sprite(ResourceManager.Instance.GetBitmap(R.drawable.smurf_sprite),4,4, 16 );
+        spritesmurf = new Sprite(ResourceManager.Instance.GetBitmap(R.drawable.smurf_sprite), 4, 4, 16);
 
         //Find the surfaceview size or screensize
         metrics = _view.getResources().getDisplayMetrics();
@@ -88,18 +88,18 @@ public class Smurf implements EntityBase, Collidable{
             }
         }*/
 
-        // New Week 8
-        if (TouchManager.Instance.HasTouch())  // Touch and drag
-        {
-            // Check collision with the smurf sprite
-            float imgRadius1 = spritesmurf.GetWidth() * 0.5f;
-            if (Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, xPos,yPos, imgRadius1) || hasTouched)
+            // New Week 8
+            if (TouchManager.Instance.HasTouch())  // Touch and drag
             {
-                hasTouched = true;
-                xPos = TouchManager.Instance.GetPosX();
-                yPos = TouchManager.Instance.GetPosY();
+                // Check collision with the smurf sprite
+                float imgRadius1 = spritesmurf.GetWidth() * 0.5f;
+                if (Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, xPos,yPos, imgRadius1) || hasTouched)
+                {
+                    hasTouched = true;
+                    xPos = TouchManager.Instance.GetPosX();
+                    yPos = TouchManager.Instance.GetPosY();
+                }
             }
-        }
     }
 
     @Override
@@ -110,13 +110,13 @@ public class Smurf implements EntityBase, Collidable{
 
         //transform.postTranslate(xPos, yPos);
         // New to Week 8
-        spritesmurf.Render(_canvas, xPos, yPos);  // Location can be changed!
+        spritesmurf.Render(_canvas, 500, 500);  // Location can be changed!
 
-        _canvas.drawBitmap(bmp, xPos, yPos, null);
-        
+        _canvas.drawBitmap(bmp, 600, 100, null);
+
         Matrix transform = new Matrix();
         transform.postScale((0.5f + Math.abs((float)Math.sin(lifetime))), (0.5f + Math.abs((float)Math.sin(lifetime))));
-        _canvas.drawBitmap(bmp, transform, null);
+        _canvas.drawBitmap(bmp,transform, null);
     }
 
     @Override
@@ -125,25 +125,22 @@ public class Smurf implements EntityBase, Collidable{
     }
 
     @Override
-    public int GetRenderLayer() {
-        return LayerConstants.BACKGROUND_LAYER;
-    }
+    public int GetRenderLayer() {return LayerConstants.SHIP_LAYER;}
 
     @Override
     public void SetRenderLayer(int _newLayer){
     }
 
     @Override
-    public ENTITY_TYPE GetEntityType(){ return ENTITY_TYPE.ENT_DEFAULT;}
+    public ENTITY_TYPE GetEntityType(){ return ENTITY_TYPE.ENT_SHIP;}
 
-    public static Ship Create()
-    {
+    public static Ship Create() {
         Ship result = new Ship();
-        EntityManager.Instance.AddEntity(result, ENTITY_TYPE.ENT_DEFAULT);
+        EntityManager.Instance.AddEntity(result, ENTITY_TYPE.ENT_SHIP);
         return result;
     }
 
-    @Override
+    /*@Override
     public String GetType() {
         return "Smurf";
     }
@@ -163,12 +160,12 @@ public class Smurf implements EntityBase, Collidable{
         return bmp.getWidth();
     }
 
-   @Override
+    @Override
     public void OnHit(Collidable _other) {
         if(_other.GetType() != this.GetType()
                 && _other.GetType() !=  "Smurf") {  // Another entity
             SetIsDone(true);
         }
-    }
-
+    }*/
 }
+

@@ -13,7 +13,8 @@ import android.content.Intent;
 
 // Created by TanSiewLan2021
 
-public class MainMenu extends Activity implements OnClickListener, StateBase {  //Using StateBase class
+//Using StateBase class
+public class MainMenu extends Activity implements OnClickListener, StateBase {
 
     //Define buttons
     private Button btn_start;
@@ -83,8 +84,7 @@ public class MainMenu extends Activity implements OnClickListener, StateBase {  
     public void Update(float _dt) {
     }
 	
-    @Override
-    public String GetName() {
+    @Override public String GetName() {
         return "Mainmenu";
     }
 

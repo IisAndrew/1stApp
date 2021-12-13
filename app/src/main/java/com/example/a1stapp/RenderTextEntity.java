@@ -25,6 +25,7 @@ public class RenderTextEntity implements EntityBase{
     long lastTime = 0; // Time
     long lastFPSTime = 0; // last frame time
     float fps; // use to store by FPS
+    int score = 0;
 
     @Override
     public boolean IsDone(){
@@ -49,6 +50,7 @@ public class RenderTextEntity implements EntityBase{
         // get actual fps
 
         frameCount++;
+        score++;
 
         long currentTime = System.currentTimeMillis(); // Get current time from system time
 
@@ -71,8 +73,9 @@ public class RenderTextEntity implements EntityBase{
         // font color is black
         paint.setStrokeWidth(200);  // How thick the font is
         paint.setTypeface(myfont); // Use the font type that I loaded
-        paint.setTextSize(70); // Font size.
-        _canvas.drawText("FPS: " + fps, 30, 80, paint);  // For now, default number but u can use _view.getWidth?
+        paint.setTextSize(30); // Font size.
+        _canvas.drawText("FPS: " + fps, 660, 50, paint);  // For now, default number but u can use _view.getWidth?
+        _canvas.drawText("Score: " + score, 10, 50, paint);
     }
 
     @Override

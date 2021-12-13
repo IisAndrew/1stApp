@@ -34,7 +34,7 @@ public class RenderBackground implements EntityBase{
     // TO initialise or load resources
     public void Init(SurfaceView _view) {
         bmp = BitmapFactory.decodeResource(_view.getResources(), R.drawable.newbg);
-        Ship = ResourceManager.Instance.GetBitmap(R.drawable.splashheli);
+        //Ship = ResourceManager.Instance.GetBitmap(R.drawable.heli);
 
         // Finding the screen width & height to allow the images to scale according to it.
         DisplayMetrics metrics = _view.getResources().getDisplayMetrics();
@@ -42,27 +42,28 @@ public class RenderBackground implements EntityBase{
         ScreenHeight = metrics.heightPixels;
 
         Scaledbmp = Bitmap.createScaledBitmap(bmp, ScreenWidth, ScreenHeight, true);
+        //Scaledbmp2 = Bitmap.createScaledBitmap(Ship, ScreenWidth, ScreenHeight, true);
     }
 
     @Override
     public void Update(float _dt){
-        xPos  -= _dt * 500; // How fast you want to pan the screen
+        yPos  += _dt * 200; // How fast you want to pan the screen
 
-        if (xPos < -ScreenWidth){
-            xPos = 0;
+        if (yPos > ScreenHeight){
+            yPos = 0;
         }
     }
 
     @Override
     public void Render(Canvas _canvas){
         _canvas.drawBitmap(Scaledbmp, xPos, yPos, null); // 1st image
-        _canvas.drawBitmap(Scaledbmp, xPos + ScreenWidth, yPos, null);
+        _canvas.drawBitmap(Scaledbmp, xPos, yPos - ScreenHeight, null);
 
         Matrix transform = new Matrix();
         //transform.postTranslate(200, 200);
-        transform.postRotate(30);
-        _canvas.drawBitmap(Ship, transform, null);
-        _canvas.drawBitmap(Ship, 500, 500, null);
+       // transform.postRotate(30);
+        //_canvas.drawBitmap(Ship, transform, null);
+        //_canvas.drawBitmap(Ship, 500, 500, null);
     }
 
     @Override

@@ -23,7 +23,6 @@ public class GameSystem {
 
     public void Init(SurfaceView _view)
     {
-
         // We will add all of our states into the state manager here!
         StateManager.Instance.AddState(new MainMenu());
         StateManager.Instance.AddState(new MainGameSceneState());
