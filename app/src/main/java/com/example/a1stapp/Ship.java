@@ -51,7 +51,7 @@ public class Ship implements EntityBase {
 
         // New to Week 8
         // Using Sprite animation class to load our sprite sheet
-        spritesmurf = new Sprite(ResourceManager.Instance.GetBitmap(R.drawable.heli), 4, 4, 16);
+        spritesmurf = new Sprite(ResourceManager.Instance.GetBitmap(R.drawable.heli), 1, 1, 16);
 
         //Find the surfaceview size or screensize
         metrics = _view.getResources().getDisplayMetrics();

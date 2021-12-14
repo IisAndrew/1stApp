@@ -4,7 +4,11 @@ import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Bundle;
 import android.view.SurfaceView;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 
 // Created by TanSiewLan2021
 
@@ -14,7 +18,6 @@ public class MainGameSceneState implements StateBase {
     public String GetName() {
         return "MainGame";
     }
-
 
     public void OnEnter(SurfaceView _view)
     {
@@ -37,7 +40,6 @@ public class MainGameSceneState implements StateBase {
         EntityManager.Instance.Render(_canvas);
 
     }
-
 
     public void Update(float _dt) {
 

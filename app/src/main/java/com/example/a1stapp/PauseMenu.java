@@ -11,18 +11,14 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.content.Intent;
 
-// Created by TanSiewLan2021
+public class PauseMenu extends Activity implements OnClickListener, StateBase{
 
-//Using StateBase class
-public class MainMenu extends Activity implements OnClickListener, StateBase {
-
-    //Define buttons
-    private Button btn_start;
-    private Button btn_back;
+    private Button btn_continue;
+    private Button btn_quit;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
 
         // Hide Title
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -31,19 +27,18 @@ public class MainMenu extends Activity implements OnClickListener, StateBase {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.mainmenu);
+        //setContentView(R.layout.pausepage);
 
-        btn_start = (Button)findViewById(R.id.btn_start);
-        btn_start.setOnClickListener(this); //Set Listener to this button --> Start Button
+        btn_continue = (Button)findViewById(R.id.btn_continue);
+        btn_continue.setOnClickListener(this); //Set Listener to this button --> Start Button
 
-        btn_back = (Button)findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(this); //Set Listener to this button --> Back Button
+        btn_quit = (Button)findViewById(R.id.btn_quit);
+        btn_quit.setOnClickListener(this); //Set Listener to this button --> Back Button
 
-		  //StateManager.Instance.AddState(new Mainmenu());
+        //StateManager.Instance.AddState(new Mainmenu());
     }
 
     @Override
-    //Invoke a callback event in the view
     public void onClick(View v)
     {
         // Intent = action to be performed.
@@ -52,42 +47,41 @@ public class MainMenu extends Activity implements OnClickListener, StateBase {
 
         Intent intent = new Intent();
 
-        if (v == btn_start)
+        if (v == btn_continue)
         {
             // intent --> to set to another class which another page or screen that we are launching.
             intent.setClass(this, GamePage.class);
- 				 StateManager.Instance.ChangeState("MainGame"); // Default is like a loading page
+            StateManager.Instance.ChangeState("MainGame"); // Default is like a loading page
 
         }
 
-        else if (v == btn_back)
+        else if (v == btn_quit)
         {
             //intent.setClass(this, MainMenu.class);
-            finish();
-            System.exit(0);
+            intent.setClass(this, MainMenu.class);
+            StateManager.Instance.ChangeState("MainMenu");
         }
         startActivity(intent);
-
     }
 
     @Override
     public void Render(Canvas _canvas) {
     }
-	
+
     @Override
     public void OnEnter(SurfaceView _view) {
     }
-	
+
     @Override
     public void OnExit() {
     }
-	
+
     @Override
     public void Update(float _dt) {
     }
-	
+
     @Override public String GetName() {
-        return "MainMenu";
+        return "PauseMenu";
     }
 
     @Override

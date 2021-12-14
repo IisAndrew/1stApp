@@ -3,23 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/mainscreen">
+    android:background="@drawable/pausemenubg">
 
     <Button
-        android:id="@+id/btn_start"
+        android:id="@+id/btn_continue"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="357dp"
-        android:layout_marginRight="198dp"
+        android:layout_marginTop="365dp"
+        android:layout_marginRight="195dp"
         android:background="@drawable/blankbutton"
-        android:text="Start"
+        android:text="Continue"
         android:textColor="#ff5349"
         android:textSize="18dp" />
 
     <Button
-        android:id="@+id/btn_option"
+        android:id="@+id/btn_quit"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
@@ -27,22 +27,8 @@
         android:layout_marginTop="449dp"
         android:layout_marginRight="195dp"
         android:background="@drawable/blankbutton"
-        android:text="option"
+        android:text="Quit"
         android:textColor="#ff5349"
         android:textSize="18dp" />
-
-    <Button
-        android:id="@+id/btn_back"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="547dp"
-        android:layout_marginRight="197dp"
-        android:background="@drawable/blankbutton"
-        android:text="Back"
-        android:textColor="#ff5349"
-        android:textSize="18dp" />
-
 
 </RelativeLayout>

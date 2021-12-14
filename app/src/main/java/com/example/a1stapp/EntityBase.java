@@ -1,13 +1,15 @@
 package com.example.a1stapp;
 
 import android.graphics.Canvas;
+import android.os.Bundle;
 import android.view.SurfaceView;
 
 // Created by TanSiewLan2021
 
 public interface EntityBase
 {
- 	 //used for entities such as background
+
+    //used for entities such as background
     enum ENTITY_TYPE{
         //ENT_PLAYER,
         //ENT_SMURF,

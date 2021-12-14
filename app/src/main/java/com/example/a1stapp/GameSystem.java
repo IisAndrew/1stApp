@@ -26,6 +26,7 @@ public class GameSystem {
         // We will add all of our states into the state manager here!
         StateManager.Instance.AddState(new MainMenu());
         StateManager.Instance.AddState(new MainGameSceneState());
+        StateManager.Instance.AddState(new PauseMenu());
     }
 
     public void SetIsPaused(boolean _newIsPaused)

@@ -3,6 +3,7 @@ package com.example.a1stapp;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.view.SurfaceView;
 
 //Create a new entity name the class name as RenderTextEntity.

@@ -1,9 +1,16 @@
 package com.example.a1stapp;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.SurfaceView;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 
 public class PausebuttonEntity implements EntityBase{
 
@@ -37,8 +44,8 @@ public class PausebuttonEntity implements EntityBase{
     @Override
     public void Init(SurfaceView _view) {
 
-        bmpP = ResourceManager.Instance.GetBitmap(R.drawable.pause);
-        bmpUP = ResourceManager.Instance.GetBitmap(R.drawable.pause1);
+        bmpP = ResourceManager.Instance.GetBitmap(R.drawable.pausebutton);
+        bmpUP = ResourceManager.Instance.GetBitmap(R.drawable.pausebutton);
 
         DisplayMetrics metrics = _view.getResources().getDisplayMetrics();
         ScreenWidth = metrics.widthPixels;
@@ -47,8 +54,8 @@ public class PausebuttonEntity implements EntityBase{
         ScaledbmpP = Bitmap.createScaledBitmap(bmpP, (int) (ScreenWidth)/7, (int)(ScreenWidth)/7, true);
         ScaledbmpUP = Bitmap.createScaledBitmap(bmpUP, (int) (ScreenWidth)/7, (int)(ScreenWidth)/7, true);
 
-        xPos = ScreenWidth - 150;
-        yPos = 150;
+        xPos = 400;
+        yPos = 100;
 
         isInit = true;
     }
@@ -67,14 +74,14 @@ public class PausebuttonEntity implements EntityBase{
                 if (Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, xPos,yPos, imgRadius) && buttonDelay >= 0.25)
                 {
                     Paused = true;
+                    StateManager.Instance.ChangeState("MainGame");
                 }
                 buttonDelay = 0;
                 GameSystem.Instance.SetIsPaused(!GameSystem.Instance.GetIsPaused());
             }
+            else
+                Paused = false;
         }
-        else
-            Paused = false;
-
     }
 
     @Override
@@ -84,8 +91,6 @@ public class PausebuttonEntity implements EntityBase{
             _canvas.drawBitmap(ScaledbmpP,xPos - ScaledbmpP.getWidth() * 0.5f, yPos - ScaledbmpP.getHeight() * 0.5f, null);
         else
             _canvas.drawBitmap(ScaledbmpUP,xPos - ScaledbmpUP.getWidth() * 0.5f, yPos - ScaledbmpUP.getHeight() * 0.5f, null);
-
-
     }
 
     @Override
@@ -113,6 +118,4 @@ public class PausebuttonEntity implements EntityBase{
         EntityManager.Instance.AddEntity(result, ENTITY_TYPE.ENT_PAUSE);
         return result;
     }
-
-
 }
