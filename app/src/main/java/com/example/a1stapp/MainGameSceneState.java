@@ -12,7 +12,7 @@ import android.widget.Button;
 
 // Created by TanSiewLan2021
 
-public class MainGameSceneState implements StateBase {
+public class  MainGameSceneState implements StateBase {
     private float timer = 0.0f;
 
     public String GetName() {
@@ -26,6 +26,10 @@ public class MainGameSceneState implements StateBase {
         //Smurf.Create();
         Ship.Create();
         PausebuttonEntity.Create();
+        Smurf.Create();
+        enemy = Enemy.Create();
+
+
         // Example to include another Renderview for Pause Button
     }
 
@@ -33,8 +37,8 @@ public class MainGameSceneState implements StateBase {
         EntityManager.Instance.Clean();
         GamePage.Instance.finish();
     }
-
-
+    public Enemy enemy;
+    public float bulletCreate = 100;
     public void Render(Canvas _canvas)
     {
         EntityManager.Instance.Render(_canvas);
@@ -42,9 +46,12 @@ public class MainGameSceneState implements StateBase {
     }
 
     public void Update(float _dt) {
-
-        if(GameSystem.Instance.GetIsPaused())
-            return;
+//        bulletCreate += _dt;
+//        if(bulletCreate >= 100)
+//        {
+//            Bullet.Create(enemy.GetPosX(),enemy.GetPosY());
+//            bulletCreate = 0;
+//        }
 
         EntityManager.Instance.Update(_dt);
 

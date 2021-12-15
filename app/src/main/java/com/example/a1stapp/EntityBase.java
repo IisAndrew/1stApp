@@ -18,6 +18,8 @@ public interface EntityBase
         //ENT_TEXT,
         //ENT_NEXT,
         ENT_DEFAULT,
+        ENT_ENEMY,
+        ENT_BULLET,
     }
 
     boolean IsDone();
