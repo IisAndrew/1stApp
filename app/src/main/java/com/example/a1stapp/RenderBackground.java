@@ -48,6 +48,8 @@ public class RenderBackground implements EntityBase{
 
     @Override
     public void Update(float _dt){
+        if(GameSystem.Instance.GetIsPaused())
+            return;
         yPos  += _dt * 200; // How fast you want to pan the screen
 
         if (yPos > ScreenHeight){
