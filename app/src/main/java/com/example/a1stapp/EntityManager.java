@@ -29,22 +29,22 @@ public class EntityManager {
         LinkedList<EntityBase> removalList = new LinkedList<EntityBase>();
 
         // Update all
-        for(int i = 0; i < entityList.size(); ++i)
-        {
-            // Lets check if is init, initialize if not
-            if (!entityList.get(i).IsInit())
-            {
-                entityList.get(i).Init(view);
-            }
-
-            entityList.get(i).Update(_dt);
-
-            // Check if need to clean up
-            if (entityList.get(i).IsDone()) {
-                // Done! Time to add to the removal list
-                removalList.add(entityList.get(i));
-            }
-        }
+//        for(int i = 0; i < entityList.size(); ++i)
+//        {
+//            // Lets check if is init, initialize if not
+//            if (!entityList.get(i).IsInit())
+//            {
+//                entityList.get(i).Init(view);
+//            }
+//
+//            entityList.get(i).Update(_dt);
+//
+//            // Check if need to clean up
+//            if (entityList.get(i).IsDone()) {
+//                // Done! Time to add to the removal list
+//                removalList.add(entityList.get(i));
+//            }
+//        }
 
         for (EntityBase currEntity : entityList)
         {

@@ -44,8 +44,8 @@ public class PausebuttonEntity implements EntityBase{
     @Override
     public void Init(SurfaceView _view) {
 
-        bmpP = ResourceManager.Instance.GetBitmap(R.drawable.pausebutton);
-        bmpUP = ResourceManager.Instance.GetBitmap(R.drawable.pausebutton);
+        bmpP = ResourceManager.Instance.GetBitmap(R.drawable.pause);
+        bmpUP = ResourceManager.Instance.GetBitmap(R.drawable.pause);
 
         DisplayMetrics metrics = _view.getResources().getDisplayMetrics();
         ScreenWidth = metrics.widthPixels;
@@ -75,9 +75,10 @@ public class PausebuttonEntity implements EntityBase{
                 {
                     Paused = true;
                     StateManager.Instance.ChangeState("MainGame");
+                    GameSystem.Instance.SetIsPaused(!GameSystem.Instance.GetIsPaused());
                 }
                 buttonDelay = 0;
-                GameSystem.Instance.SetIsPaused(!GameSystem.Instance.GetIsPaused());
+
             }
             else
                 Paused = false;

@@ -15,7 +15,7 @@ public class Ship implements EntityBase {
     private boolean isDone = false;
     private Bitmap bmp = null, scaledbmp = null;
     int ScreenWidth, ScreenHeight;
-    private float xPos, yPos, offset;
+    private static float xPos, yPos, offset;
     private SurfaceView view = null;
     Matrix tfx = new Matrix();
     DisplayMetrics metrics;
@@ -70,7 +70,8 @@ public class Ship implements EntityBase {
 
     @Override
     public void Update(float _dt) {
-
+        if(GameSystem.Instance.GetIsPaused())
+            return;
         spritesmurf.Update(_dt);
 
         lifetime -= _dt;
@@ -114,9 +115,6 @@ public class Ship implements EntityBase {
 
         _canvas.drawBitmap(bmp, 350, 1000, null);
 
-        /*Matrix transform = new Matrix();
-        transform.postScale((0.5f + Math.abs((float)Math.sin(lifetime))), (0.5f + Math.abs((float)Math.sin(lifetime))));
-        _canvas.drawBitmap(bmp,transform, null);*/
     }
 
     @Override
@@ -140,20 +138,19 @@ public class Ship implements EntityBase {
         return result;
     }
 
+    public static float GetPosX() {
+        return xPos;
+    }
+
+    public static float GetPosY() {
+        return yPos;
+    }
+
     /*@Override
     public String GetType() {
         return "Smurf";
     }
 
-    @Override
-    public float GetPosX() {
-        return xPos;
-    }
-
-    @Override
-    public float GetPosY() {
-        return yPos;
-    }
 
     @Override
     public float GetRadius() {
