@@ -20,7 +20,7 @@ public class Bullet implements EntityBase, Collidable{
     private float speed = 0;
     private boolean isDone = false;
     private boolean isInit = false;
-
+    private float xIncr, yIncr , bulletSpeed;
     private Sprite bullet = null;
 
     private boolean hasTouched = false;
@@ -51,6 +51,10 @@ public class Bullet implements EntityBase, Collidable{
         //Random ranGen = new Random();
         //xPos = ranGen.nextInt() * _view.getWidth();
         //yPos = ranGen.nextInt() * _view.getHeight();
+        bulletSpeed = 50;
+        yIncr = (float) (Math.acos(Enemy.GetAngle())*bulletSpeed);
+        xIncr = (float) (Math.asin(Enemy.GetAngle())*bulletSpeed);
+
         xPos = xSpawnPos - 92;
         yPos = ySpawnPos;
     }
@@ -61,7 +65,9 @@ public class Bullet implements EntityBase, Collidable{
             return;
         //bullet.Update(_dt);
 
-        yPos += 50 *_dt;
+        //yPos += 50 *_dt;
+        yPos += yIncr * _dt;
+        xPos += xIncr * _dt;
     }
 
     @Override

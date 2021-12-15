@@ -49,10 +49,10 @@ public class  MainGameSceneState implements StateBase {
 //        bulletCreate += _dt;
 //        if(bulletCreate >= 100)
 //        {
-//            Bullet.Create(enemy.GetPosX(),enemy.GetPosY());
+//
 //            bulletCreate = 0;
 //        }
-
+        Bullet.Create(enemy.GetPosX(),enemy.GetPosY());
         EntityManager.Instance.Update(_dt);
 
         if (TouchManager.Instance.IsDown()) {

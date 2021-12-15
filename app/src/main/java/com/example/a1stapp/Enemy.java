@@ -18,7 +18,7 @@ public class Enemy implements EntityBase, Collidable{
     private float speed = 0;
     private boolean isDone = false;
     private boolean isInit = false;
-    private float angleToPlayer = 0;
+    private static float angleToPlayer = 0;
 
     //private Sprite enemysprite = null;
 
@@ -47,10 +47,10 @@ public class Enemy implements EntityBase, Collidable{
 
         // Define how we want the player to react or if it is enemy or obstacles, how it is going to appear as.
         // You should have this part!
-        Random ranGen = new Random();
+        //Random ranGen = new Random();
         //xPos = ranGen.nextInt(_view.getWidth());
-        xPos = 500;
-        yPos = 50;
+        xPos = 400;
+        yPos = 500;
 
     }
 
@@ -70,7 +70,7 @@ public class Enemy implements EntityBase, Collidable{
 
         Matrix transform = new Matrix();
 
-        transform.setRotate(angleToPlayer);
+        transform.setRotate(360 - angleToPlayer);
         transform.postTranslate(-bmp.getWidth() * 0.5f, -bmp.getHeight() * 0.5f);
 
         transform.postTranslate(xPos, yPos);
@@ -126,6 +126,9 @@ public class Enemy implements EntityBase, Collidable{
         return bmp.getWidth();
     }
 
+    public static float GetAngle() {
+        return angleToPlayer;
+    }
     @Override
     public void OnHit(Collidable _other) {
         if(_other.GetType() !=  "Bullet") {  // Another entity
