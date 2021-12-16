@@ -25,8 +25,7 @@ public class  MainGameSceneState implements StateBase {
         RenderTextEntity.Create();
         //Smurf.Create();
         Ship.Create();
-        PausebuttonEntity.Create();
-        Smurf.Create();
+        //PausebuttonEntity.Create();
         enemy = Enemy.Create();
 
 

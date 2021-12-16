@@ -7,13 +7,13 @@ package com.example.a1stapp;
 public class LayerConstants {
 
     public final static int BACKGROUND_LAYER = 0;
-    public final static int RENDERTEXT_LAYER = 50;
+    public final static int RENDERTEXT_LAYER = 2;
     public final static int GAMEOBJECTS_LAYER = 100;  // Example
     public final static int UI_LAYER = 1000;
     public final static int SMURF_LAYER = 2;
     public final static int PAUSEBUTTON_LAYER = 50;
     public final static int STAR_LAYER = 5;
-    public final static int SHIP_LAYER = 3;
+    public final static int SHIP_LAYER = 40;
     public final static int ENEMY_LAYER = 10;
     public final static int BULLET_LAYER = 11;
 }

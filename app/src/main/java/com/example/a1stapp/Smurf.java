@@ -20,8 +20,6 @@ public class Smurf implements EntityBase, Collidable{
     Matrix tfx = new Matrix();
     DisplayMetrics metrics;
 
-    private boolean isInit = false;
-
     private Sprite spritesmurf = null;   // New on Week 8
 
     private boolean hasTouched = false; // New to Week 8
@@ -47,16 +45,16 @@ public class Smurf implements EntityBase, Collidable{
         //isInit = true;
 
         //bmp = BitmapFactory.decodeResource(_view.getResources(), R.drawable.ship2_1);
-        bmp = ResourceManager.Instance.GetBitmap( R.drawable.heli);
+        bmp = ResourceManager.Instance.GetBitmap( R.drawable.ship2_1);
 
         // New to Week 8
         // Using Sprite animation class to load our sprite sheet
-        spritesmurf = new Sprite(ResourceManager.Instance.GetBitmap(R.drawable.smurf_sprite),4,4, 16 );
+        spritesmurf = new Sprite(ResourceManager.Instance.GetBitmap(R.drawable.smurf_sprite),4,4,16 );
 
         //Find the surfaceview size or screensize
         metrics = _view.getResources().getDisplayMetrics();
-        ScreenHeight = metrics.heightPixels/5;
-        ScreenWidth = metrics.widthPixels/5;
+        ScreenHeight = metrics.heightPixels / 5;
+        ScreenWidth = metrics.widthPixels / 5;
         scaledbmp = Bitmap.createScaledBitmap(bmp, ScreenWidth, ScreenHeight, true);
 
         // Define how we want the player to react or if it is enemy or obstacles, how it is going to appear as.
@@ -110,13 +108,13 @@ public class Smurf implements EntityBase, Collidable{
 
         //transform.postTranslate(xPos, yPos);
         // New to Week 8
-        spritesmurf.Render(_canvas, xPos, yPos);  // Location can be changed!
+        spritesmurf.Render(_canvas, 500, 300);  // Location can be changed!
 
-        _canvas.drawBitmap(bmp, xPos, yPos, null);
+        //_canvas.drawBitmap(bmp, xPos, yPos, null);
         
-        Matrix transform = new Matrix();
-        transform.postScale((0.5f + Math.abs((float)Math.sin(lifetime))), (0.5f + Math.abs((float)Math.sin(lifetime))));
-        _canvas.drawBitmap(bmp, transform, null);
+        //Matrix transform = new Matrix();
+        //transform.postScale((0.5f + Math.abs((float)Math.sin(lifetime))), (0.5f + Math.abs((float)Math.sin(lifetime))));
+        //_canvas.drawBitmap(bmp, transform, null);
     }
 
     @Override
@@ -134,12 +132,12 @@ public class Smurf implements EntityBase, Collidable{
     }
 
     @Override
-    public ENTITY_TYPE GetEntityType(){ return ENTITY_TYPE.ENT_DEFAULT;}
+    public ENTITY_TYPE GetEntityType(){ return ENTITY_TYPE.ENT_SHIP;}
 
-    public static Ship Create()
+    public static Smurf Create()
     {
-        Ship result = new Ship();
-        EntityManager.Instance.AddEntity(result, ENTITY_TYPE.ENT_DEFAULT);
+        Smurf result = new Smurf();
+        EntityManager.Instance.AddEntity(result, ENTITY_TYPE.ENT_SHIP);
         return result;
     }
 

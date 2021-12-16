@@ -51,7 +51,7 @@ public class Ship implements EntityBase {
 
         // New to Week 8
         // Using Sprite animation class to load our sprite sheet
-        spritesmurf = new Sprite(ResourceManager.Instance.GetBitmap(R.drawable.heli), 1, 1, 16);
+        spritesmurf = new Sprite(ResourceManager.Instance.GetBitmap(R.drawable.smurf_sprite), 4, 4, 16);
 
         //Find the surfaceview size or screensize
         metrics = _view.getResources().getDisplayMetrics();
@@ -70,15 +70,14 @@ public class Ship implements EntityBase {
 
     @Override
     public void Update(float _dt) {
-        if(GameSystem.Instance.GetIsPaused())
-            return;
+
         spritesmurf.Update(_dt);
 
         lifetime -= _dt;
         if (lifetime < 0.0f)
             //SetIsDone(true);
 
-        /*if(TouchManager.Instance.IsDown()){   // Previous and it is for just a touch - useful for collision with a image (example button)
+        if(TouchManager.Instance.IsDown()){   // Previous and it is for just a touch - useful for collision with a image (example button)
 
             // Check collision
             float imgRadius = bmp.getHeight() * 0.5f;
@@ -87,7 +86,7 @@ public class Ship implements EntityBase {
                 SetIsDone(true); // // <--- This part here or this code, meant when time is up, kill the items.
                 // If it is a button --> Going to another state
             }
-        }*/
+        }
 
             // New Week 8
             if (TouchManager.Instance.HasTouch())  // Touch and drag
@@ -101,6 +100,9 @@ public class Ship implements EntityBase {
                     yPos = TouchManager.Instance.GetPosY();
                 }
             }
+
+        if(GameSystem.Instance.GetIsPaused())
+            return;
     }
 
     @Override
@@ -111,9 +113,9 @@ public class Ship implements EntityBase {
 
         //transform.postTranslate(xPos, yPos);
         // New to Week 8
-        spritesmurf.Render(_canvas, (int)xPos, (int)yPos);  // Location can be changed!
+        spritesmurf.Render(_canvas, 350, 1000);  // Location can be changed!
 
-        _canvas.drawBitmap(bmp, 350, 1000, null);
+        //_canvas.drawBitmap(bmp, 350, 1000, null);
 
     }
 
@@ -130,11 +132,11 @@ public class Ship implements EntityBase {
     }
 
     @Override
-    public ENTITY_TYPE GetEntityType(){ return ENTITY_TYPE.ENT_DEFAULT;}
+    public ENTITY_TYPE GetEntityType(){ return ENTITY_TYPE.ENT_SHIP;}
 
     public static Ship Create() {
         Ship result = new Ship();
-        EntityManager.Instance.AddEntity(result, ENTITY_TYPE.ENT_DEFAULT);
+        EntityManager.Instance.AddEntity(result, ENTITY_TYPE.ENT_SHIP);
         return result;
     }
 
